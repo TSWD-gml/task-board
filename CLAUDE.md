@@ -6,9 +6,20 @@
 
 ## 技術スタック
 
-- **フレームワーク**: React 19
-- **ビルドツール**: Vite 8
-- **言語**: JavaScript (JSX)
+| カテゴリ | ツール・バージョン |
+|---------|-----------------|
+| フレームワーク | React 19 |
+| ビルドツール | Vite 8 |
+| 言語 | JavaScript (JSX) |
+| リンター | oxlint |
+| デプロイ | GitHub Pages (GitHub Actions) |
+
+### 主要な依存関係
+
+```json
+"dependencies":    { "react": "^19", "react-dom": "^19" }
+"devDependencies": { "vite": "^8", "@vitejs/plugin-react": "^6", "oxlint": "^1" }
+```
 
 ## 開発コマンド
 
@@ -65,6 +76,41 @@ docs: READMEにセットアップ手順を追加
 | `fix/` | バグ修正 |
 | `refactor/` | リファクタリング |
 | `docs/` | ドキュメント修正 |
+
+## デプロイ先
+
+- **本番URL**: https://tswd-gml.github.io/task-board/
+- **リポジトリ**: https://github.com/TSWD-gml/task-board
+- `main` ブランチへのプッシュで GitHub Actions が自動的にビルド・デプロイする
+
+## コンポーネント命名規約
+
+### ファイル名
+
+| 種別 | 規則 | 例 |
+|------|------|----|
+| コンポーネント | PascalCase + `.jsx` | `TaskItem.jsx`, `TaskList.jsx` |
+| カスタムフック | camelCase、`use` プレフィックス + `.js` | `useTasks.js` |
+| スタイル | コンポーネント名と同名 + `.css` | `TaskItem.css` |
+| ユーティリティ | camelCase + `.js` | `formatDate.js` |
+
+### コンポーネント内の規則
+
+- コンポーネント関数名は **PascalCase**（例: `function TaskItem()`）
+- props の変数名は **camelCase**（例: `onDelete`, `isCompleted`）
+- イベントハンドラは **`handle` プレフィックス**（例: `handleKeyDown`, `handleAddTask`）
+- コールバック props は **`on` プレフィックス**（例: `onToggle`, `onDelete`）
+- state 変数は **camelCase**（例: `tasks`, `inputText`）
+
+### ディレクトリ構成（拡張時の指針）
+
+```
+src/
+├── components/   # 再利用可能なUIコンポーネント（PascalCase）
+├── hooks/        # カスタムフック（use〜.js）
+├── utils/        # 汎用ユーティリティ関数
+└── assets/       # 画像・フォントなど静的ファイル
+```
 
 ## ファイル・フォルダ命名規則
 
